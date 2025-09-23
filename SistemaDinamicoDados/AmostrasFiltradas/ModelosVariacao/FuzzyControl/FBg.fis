@@ -1,0 +1,67 @@
+[System]
+Name='FBg'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=12
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='PHI'
+Range=[-3.1416 3.1416]
+NumMFs=11
+MF1='EN':'gaussmf',[0.15707963267949 -3.14159265358979]
+MF2='PNR':'gaussmf',[0.15707963267949 -2.51327412287183]
+MF3='GN':'gaussmf',[0.15707963267949 -1.88495559215388]
+MF4='MN':'gaussmf',[0.15707963267949 -1.25663706143592]
+MF5='PNF':'gaussmf',[0.15707963267949 -0.628318530717959]
+MF6='Z':'gaussmf',[0.15707963267949 0]
+MF7='PPF':'gaussmf',[0.15707963267949 0.628318530717959]
+MF8='MP':'gaussmf',[0.15707963267949 1.25663706143592]
+MF9='GP':'gaussmf',[0.15707963267949 1.88495559215388]
+MF10='PPR':'gaussmf',[0.15707963267949 2.51327412287183]
+MF11='EP':'gaussmf',[0.15707963267949 3.14159265358979]
+
+[Input2]
+Name='L'
+Range=[0 5]
+NumMFs=2
+MF1='MP':'linzmf',[0.01 0.02]
+MF2='G':'linsmf',[0.01 0.02]
+
+[Output1]
+Name='VF'
+Range=[-0.15 0.15]
+NumMFs=5
+MF1='R':'pimf',[-0.15 -0.15 -0.1 -0.05]
+MF2='MR':'pimf',[-0.1 -0.05 -0.05 0]
+MF3='P':'pimf',[-0.05 0 0 0.05]
+MF4='MF':'pimf',[0 0.05 0.05 0.1]
+MF5='F':'pimf',[0.05 0.1 0.15 0.15]
+
+[Output2]
+Name='WF'
+Range=[-0.5 0.5]
+NumMFs=3
+MF1='H':'linzmf',[-0.5 -0]
+MF2='N':'trimf',[-0.5 0 0.5]
+MF3='AH':'linsmf',[0 0.5]
+
+[Rules]
+0 1, 3 2 (1) : 1
+1 2, 1 2 (1) : 1
+2 2, 2 3 (1) : 1
+3 2, 3 3 (1) : 1
+4 2, 3 1 (1) : 1
+5 2, 4 1 (1) : 1
+6 2, 5 2 (1) : 1
+7 2, 4 3 (1) : 1
+8 2, 3 3 (1) : 1
+9 2, 3 1 (1) : 1
+10 2, 2 1 (1) : 1
+11 2, 1 2 (1) : 1
